@@ -1,6 +1,6 @@
 import sqlite3
-from flask import Flask, request, jsonify #added to top of file
-from flask_cors import CORS #added to top of file
+from flask import Flask, request, jsonify
+from flask_cors import CORS 
 
 def connect_to_db():
     conn = sqlite3.connect('database.db')
@@ -115,9 +115,6 @@ def delete_user(user_id):
         conn.close()
     return message
 
-if __name__ == "__main__":
-    create_db_table()
-
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -146,4 +143,5 @@ def api_delete_user(user_id):
 if __name__ == "__main__":
     #app.debug = True
     #app.run(debug=True)
+    create_db_table()
     app.run() #run app
